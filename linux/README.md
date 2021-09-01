@@ -1,5 +1,53 @@
 # Linux
 
+## 사용자 관리
+
+여러 사용자가 사용할 수 있기때문에 계정관리가 필요하다.
+
+### 1. 계정 확인
+
+```bash
+# cat /etc/passwd | grep testuser
+```
+testuser 계정이 있는지 확인하는 과정이다. testuser가 없다면 아무 결과도 없을 것이다.
+
+### 2. 홈폴더 + 쉘환경 지정 ★
+사용중인 리눅스가 어떤 리눅스냐에 따라 다른 명령어를 가진다.
+
+**우분투, SUSE, Arch**
+```bash
+# useradd -m -s /bin/bash <계정이름>
+```
+- -m 옵션을 명시해야 홈 디렉토리가 생성된다.
+- -s /bin/bash 옵션을 명시해야 쉘 환경이 설정된다.
+- -g <groupName> 을 사용하면 기존에 있는 그룹에 들어가게 된다.
+- -G <groupName> 을 사용하면 그룹이 없을경우 생성해서 들어가게 된다.
+
+**CentOS**
+```bash
+# useradd <계정이름>
+```
+- CentOS 등 레드햇 계열에서는 옵션을 주지 안아도 홈 디렉토리가와 쉘 환경이 자동으로 설정됨
+
+#### 2.1. 실행 예시
+```bash
+# useradd testuser
+# cat /etc/passwd | grep testuser
+testuser:x:500:500::/home/testuser:/bin/bash
+```
+- testuser를 만든다
+- UID와 GID는 500
+- 홈폴더는 /home/testuser
+- bash셸이 사용 가능하다.
+
+```bash
+# echo 'passwdtest123' | passwd --stdin testuser
+Changing password for user testuser.
+passwd: all authentication tokens updated successfully.
+```
+- testuser 계정의 패스워드를 passwdtest123으로 설정하였다.
+
+
 
 ## 권한 관리
 
