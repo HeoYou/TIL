@@ -7,32 +7,33 @@
 ### 1. 계정 확인
 
 ```bash
-# cat /etc/passwd | grep testuser
+$ cat /etc/passwd | grep testuser
 ```
 testuser 계정이 있는지 확인하는 과정이다. testuser가 없다면 아무 결과도 없을 것이다.
 
-### 2. 홈폴더 + 쉘환경 지정 ★
+### 2. 계정생성(홈디렉토리, 셸 설정) ★
 사용중인 리눅스가 어떤 리눅스냐에 따라 다른 명령어를 가진다.
 
 **우분투, SUSE, Arch**
 ```bash
-# useradd -m -s /bin/bash <계정이름>
+$ useradd -m -s /bin/bash <계정이름>
 ```
 - -m 옵션을 명시해야 홈 디렉토리가 생성된다.
 - -s /bin/bash 옵션을 명시해야 쉘 환경이 설정된다.
 - -g <groupName> 을 사용하면 기존에 있는 그룹에 들어가게 된다.
 - -G <groupName> 을 사용하면 그룹이 없을경우 생성해서 들어가게 된다.
+- -u <UID> 사용자아이디 (UID)를 지정할 수 있다.
 
 **CentOS**
 ```bash
-# useradd <계정이름>
+$ useradd <계정이름>
 ```
 - CentOS 등 레드햇 계열에서는 옵션을 주지 안아도 홈 디렉토리가와 쉘 환경이 자동으로 설정됨
 
 #### 2.1. 실행 예시
 ```bash
-# useradd testuser
-# cat /etc/passwd | grep testuser
+$ useradd testuser
+$ cat /etc/passwd | grep testuser
 testuser:x:500:500::/home/testuser:/bin/bash
 ```
 - testuser를 만든다
@@ -41,12 +42,31 @@ testuser:x:500:500::/home/testuser:/bin/bash
 - bash셸이 사용 가능하다.
 
 ```bash
-# echo 'passwdtest123' | passwd --stdin testuser
+$ echo 'passwdtest123' | passwd --stdin testuser
 Changing password for user testuser.
 passwd: all authentication tokens updated successfully.
 ```
 - testuser 계정의 패스워드를 passwdtest123으로 설정하였다.
 
+
+### 3. 계정 삭제 ★
+```bash
+$ useradd testuser
+$ cat /etc/passwd | grep testuser
+testuser:x:500:500::/home/testuser:/bin/bash
+```
+- 테스트 계정 생성
+
+
+```bash
+$ userdel <userName>
+$ cat /etc/passwd | grep testuser
+$ ll /home | grep testuser
+cat /etc/passwd | grep testuser
+drwx------  4  500  500  4096 2012-06-12 09:30 testuser
+```
+- 계정은 삭제되나 홈디렉토리는 남아있는걸 확인할 수 있다.
+- -r 옵션을 넣어주면 홈 디렙토리도 함께 삭제된다.
 
 
 ## 권한 관리
