@@ -10,10 +10,16 @@
 
 아래의 그래프들은 위의 그래프의 부분 그래프에 포함되는 그래프이다.
 
+<center>
 ![image](https://user-images.githubusercontent.com/51642448/131949088-95dcad8b-b509-4285-a37d-d1fe4e38dfd2.png)
 ![image](https://user-images.githubusercontent.com/51642448/131949112-5a3cfa82-c2b6-4558-82de-41ee9299e5f3.png)
+</center>
+
+<center>
 ![image](https://user-images.githubusercontent.com/51642448/131949134-ebd115ab-7b93-45a4-a9ad-61117950c540.png)
 ![image](https://user-images.githubusercontent.com/51642448/131949163-54dc3767-163a-4945-86f4-6cdaf95bac3d.png)
+</center>
+
 
 여러 부분 그래프 중에서도 연결 그래프는 그래프를 구성하는 모든 두 정점 사이에 경로가 존재하는 그래프를 말한다.
 
