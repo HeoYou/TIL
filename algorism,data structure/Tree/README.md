@@ -8,7 +8,7 @@
 
 
 
-### 용어정리
+### 1. 용어정리
 
 - 루트
 
@@ -142,8 +142,111 @@
 
 트리를 순회하는 방법
 
-- BFS
 - DFS
+- BFS
 - 전위
 - 중위
 - 후의
+
+### 2. DFS(Deptg Frist Search)를 알아보자
+
+DFS(Deptg Frist Search), 깊이 우선 탐색이라고 한다.
+
+말그대로 깊이를 우선 탐색한다.
+
+![image](https://user-images.githubusercontent.com/51642448/132092390-47d8e1bd-541a-4482-9b23-970d4d5d7c6f.png)
+
+위의 트리를 깊이우선 탐색해보자 
+
+8번 노드가 루트 노드이다.
+
+![image](https://user-images.githubusercontent.com/51642448/132126787-06671f9e-e3b3-4eed-be20-a536c48bca0c.png)
+
+**8 > 2 > 7 > 4 > 1 > 3 > 5 > 9 > 6** 의 순서대로 탐색하게 된다. 
+
+이는 항상 이렇게 순회한다는건 아니다 어떻게 코드를 짜느냐에 따라 다르다.
+
+
+
+![image](https://user-images.githubusercontent.com/51642448/132126872-554cc54a-3174-4ea8-9a02-f14839b8fe6e.png)
+
+위와 같은 방법으로도 탐색할 수 있다.
+
+**8 > 2 > 1 > 3 > 6 > 5 > 9 > 4 > 7** 위의 방법과는 다르지만 둘다 자식노드를 먼저 찾아서 순회 하는걸 알 수 있다. 
+
+
+
+#### 간단하게 순회 방법을 알아보았다. 코드 내에선 어떻게 동작하나 알아보자
+
+깊이 우선 탐색은 **스택**을 사용한다. 
+
+
+
+
+
+![image](https://user-images.githubusercontent.com/51642448/132127454-db6f90e1-22ab-4154-9cdb-5863c91daa40.png)
+
+1. 처음에 시작할 노드를 스택에 넣어준다. 
+
+
+
+**여기서 순회가 끝날 때까지 반복작업이 이루어진다.**
+
+2. 스택의 값을 팝해준다. 그럼 스택의 특징상 마지막 값이 나오게 된다.
+
+   팝해준 값은 8
+
+   8은 이제 방문한 노드다.
+
+   
+
+![image](https://user-images.githubusercontent.com/51642448/132127629-8f8f246b-0b92-46ed-a326-b966a1bcca68.png)
+
+
+
+3. 방금 팝한 8의 **자식 노드**를 다시 스택에 넣어준다. 
+
+   - 넣어주면서 이미 방문한 노드는 스택에 넣지 않는 작업이 필요로하다.
+   - 이를 해결하기 위해 visit리스트를 사용하였다. 방문한 노드를 visit 리스트에 넣어주었다.
+
+   
+
+![image](https://user-images.githubusercontent.com/51642448/132127641-cd0c257b-7f6c-4336-b49e-617fc230cd72.png)
+
+4. 8의 자식 노드 2를 넣어주게 된다.
+
+   ![image](https://user-images.githubusercontent.com/51642448/132127616-458e6276-3731-415d-af36-102303f73b0e.png)
+
+
+
+**위의 2 ~ 4의 작업을 반복하게 된다.**
+
+
+
+![image](https://user-images.githubusercontent.com/51642448/132128006-753b3120-9899-4fa1-b4df-440420bd39c7.png)
+
+2를 pop하고 2의 자식노드 7, 4, 1을 스택에 넣어준다.
+
+여기서 다음 pop의 대상은 stack의 특징상 1이 된다. 
+
+뒤에서 계속 pop을 하게 되면 깊이 우선탐색이 완성된다.
+
+다음은  DFS python 코드이다.
+
+```python
+def DFS(tree: list, start_node: int):
+    stack = []
+    visit = []
+    stack.append(start_node)
+    
+    while stack:
+        node = stack.pop()
+        print(node)
+        visit.append(node)
+        for n in tree[node]:
+            if n not in visit:
+                stack.append(n)
+```
+
+
+
