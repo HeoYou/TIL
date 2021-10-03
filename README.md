@@ -6,5 +6,4 @@ Today i learned
 
 내일부터 다시 ㄱㄱ
 
-
-git commit test
+git commit 수정하는을 아라보자
