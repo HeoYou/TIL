@@ -269,3 +269,26 @@ $ ls -l chmodtest
 755는 rwxr-xr-x와 같은 뜻이다.
 
 이런식으로도 권한을 줄 수 있따.
+
+
+
+## netstat
+
+어떤 포트가 열려있는지 확인할 때
+
+- 예)  DB와 몇개의 connection이 있는지 확인
+
+  - netstat -an | grep {port} | grep ESTABLISHED![image](https://user-images.githubusercontent.com/51642448/139677515-20bdf3ac-2bb2-4612-86bd-25b63eb90674.png)
+
+- 갯수만 확인
+
+  - netstat -an | grep {port} | grep ESTABLISHED | wc -l![image](https://user-images.githubusercontent.com/51642448/139677704-3980a4ba-cda2-46b8-bc5c-8e822e8c1bd2.png)
+
+  - wc -l 명령어를 통해 몇줄이 출력됐는지 알 수 있다.
+
+    
+
+  ![image](https://user-images.githubusercontent.com/51642448/139677905-d2c48e6c-f85e-4051-98ae-970411eaedc3.png)
+
+  - grep -c 를 이용해 몇줄이 출력됐는지 확인 가능하다.
+ 
