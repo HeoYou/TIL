@@ -291,4 +291,36 @@ $ ls -l chmodtest
   ![image](https://user-images.githubusercontent.com/51642448/139677905-d2c48e6c-f85e-4051-98ae-970411eaedc3.png)
 
   - grep -c 를 이용해 몇줄이 출력됐는지 확인 가능하다.
- 
+
+
+
+## grep
+
+
+
+grep, egrep, fgrep
+
+위 grep들은 모두 같은 역할을 함
+
+다만 패턴에 쓰일 문자열을 어떻게 적용할 것인지에 대해 다르게 인식함
+
+```bash
+grep  = grep -G	# grep에 -G 옵션을 붙인 것과 동일
+egrep = grep -E	# grep에 -E 옵션을 붙인 것과 동일
+fgrep = grep -F	# grep에 -F 옵션을 붙인 것과 동일
+```
+
+
+
+egrep이 기본 grep의 정규표현식을 사용하도록 선언
+
+fgrep은 정규표현식을 사용하지 않도록 선언
+
+
+
+3줄 요약
+
+- egrep -> 정규표현식 사용
+- fgrep -> 정규표현식 사용안해
+- grep -> 얘는 뭐지? 
+
